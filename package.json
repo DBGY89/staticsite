@@ -4,7 +4,9 @@
   "description": "A simple static website with Markdown support",
   "main": "index.html",
   "scripts": {
-    "start": "npx http-server . -c-1"
+    "start": "npx http-server dist -c-1",
+    "build": "node build.js",
+    "dev": "node build.js && npx http-server dist -c-1"
   },
   "dependencies": {
     "marked": "^4.0.0"
