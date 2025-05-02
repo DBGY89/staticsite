@@ -56,12 +56,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll suave al armario de Llull desde el CTA
     const ctaArmario = document.getElementById('cta-armario');
+    const ctaIntro = document.getElementById('cta-intro');
+    
+    function scrollToArmario() {
+        const armarioSection = document.querySelector('.armario-section');
+        if (armarioSection) {
+            armarioSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     if (ctaArmario) {
-        ctaArmario.addEventListener('click', function() {
-            const armarioSection = document.querySelector('.armario-section');
-            if (armarioSection) {
-                armarioSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+        ctaArmario.addEventListener('click', scrollToArmario);
+    }
+    if (ctaIntro) {
+        ctaIntro.addEventListener('click', scrollToArmario);
     }
 }); 

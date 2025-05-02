@@ -222,7 +222,11 @@ footer {
 }
 .intro-text {
     flex: 1;
-    color: #003845;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 2rem;
 }
 .intro-text h1 {
     font-size: 2.7rem;
@@ -241,6 +245,26 @@ footer {
     max-width: 350px;
     border-radius: 1.5rem;
     box-shadow: 0 4px 24px rgba(0,56,69,0.10);
+}
+
+.intro-cta-btn {
+    display: none;
+    background: #F26C63;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 1.75rem;
+    font-size: 0.77rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(242,108,99,0.10);
+}
+
+.intro-cta-btn:hover, .intro-cta-btn:focus {
+    background: #d94e3f;
+    outline: none;
 }
 
 .armario-section {
@@ -265,12 +289,12 @@ footer {
     color: #003845;
     border-radius: 1.2rem;
     box-shadow: 0 2px 12px rgba(0,56,69,0.08);
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    width: 320px;
+    padding: 1.5rem 1rem 1rem 1rem;
+    width: 270px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
 }
 .product-card:hover {
@@ -279,10 +303,10 @@ footer {
 }
 .product-card img {
     width: 100%;
-    height: 220px;
+    height: 180px;
     object-fit: contain;
     border-radius: 1rem 1rem 0 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     background: #f8f9fa;
     border: none;
 }
@@ -538,13 +562,32 @@ footer {
 }
 
 @media (max-width: 900px) {
+    .intro-section {
+        padding: 1.2rem 0 1.2rem 0;
+    }
     .intro-content {
         flex-direction: column;
         text-align: center;
+        gap: 1rem;
+    }
+    .intro-text {
+        align-items: center;
+        padding-right: 0;
+        order: 1;
     }
     .intro-image {
         justify-content: center;
-        margin-top: 1.5rem;
+        margin-top: 0.7rem;
+        order: 2;
+    }
+    .intro-image img {
+        max-width: 220px;
+        margin-bottom: 0.5rem;
+    }
+    .intro-cta-btn {
+        display: block;
+        order: 3;
+        margin-top: 1rem;
     }
     .product-cards {
         flex-direction: column;
@@ -594,4 +637,9 @@ footer {
 .sobre-llulls-btn:hover, .sobre-llulls-btn:focus {
     background: #d94e3f;
     outline: none;
+}
+
+.alinear-izquierda {
+    text-align: left;
+    margin-left: 0; /* o el mismo margen que el título */
 } 
