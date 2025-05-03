@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let itemsToShow = getItemsToShow();
 
     function getItemsToShow() {
-        if (window.innerWidth <= 480) {
+        if (window.innerWidth <= 768) {
             return 1;
         } else if (window.innerWidth <= 900) {
             return 2;
