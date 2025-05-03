@@ -721,4 +721,19 @@ footer {
 .alinear-izquierda {
     text-align: left;
     margin-left: 0; /* o el mismo margen que el título */
+}
+
+.intro-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #003845;
+    margin-bottom: 0.5rem;
+}
+
+.intro-subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #003845;
+    margin-bottom: 0.5rem;
+    display: block;
 } 
