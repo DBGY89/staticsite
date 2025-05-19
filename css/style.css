@@ -604,15 +604,6 @@ footer {
         display: block;
         border-radius: 1.2rem 1.2rem 0 0;
     }
-    .carousel-button {
-        position: static;
-        margin: 0 0.5rem;
-        transform: none;
-        top: auto;
-        left: auto;
-        right: auto;
-        z-index: 2;
-    }
 }
 
 @media (max-width: 480px) {
