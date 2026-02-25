@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido confirmado - Llull's</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart-checkout.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <header class="logo-header">
+        <div class="logo-center">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Llull's Logo" class="logo-centered">
+            </a>
+        </div>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="confirmation-container">
+            <div class="confirmation-header">
+                <div class="success-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h1 data-i18n="confirm.thanks">¡Gracias por tu pedido!</h1>
+                <p class="order-number"><span data-i18n="confirm.order">Pedido</span> <strong id="orderNumber"></strong></p>
+                <p class="confirmation-email"><span data-i18n="confirm.emailSent">Hemos enviado un email de confirmación a</span> <strong id="customerEmail"></strong></p>
+            </div>
+
+            <div class="confirmation-content">
+                <div class="confirmation-details">
+                    <div class="detail-block">
+                        <h3 data-i18n="checkout.shippingAddress">Dirección de envío</h3>
+                        <div id="confirmShipping"></div>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3 data-i18n="checkout.paymentMethod">Método de pago</h3>
+                        <div id="confirmPayment"></div>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3 data-i18n="confirm.shippingMethod">Método de envío</h3>
+                        <div id="confirmShippingMethod"></div>
+                    </div>
+                </div>
+
+                <div class="order-items">
+                    <h3 data-i18n="confirm.yourOrder">Tu pedido</h3>
+                    <div id="confirmItems"></div>
+                    
+                    <div class="order-totals">
+                        <div class="total-row">
+                            <span data-i18n="cart.subtotal">Subtotal</span>
+                            <span id="confirmSubtotal"></span>
+                        </div>
+                        <div class="total-row">
+                            <span data-i18n="cart.shipping">Envío</span>
+                            <span id="confirmShippingCost"></span>
+                        </div>
+                        <div class="total-row final">
+                            <span data-i18n="cart.total">Total</span>
+                            <span id="confirmTotal"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <a href="index.html" class="continue-btn" data-i18n="confirm.continueShopping">Seguir comprando</a>
+            </div>
+
+            <div class="help-section">
+                <h3 data-i18n="confirm.needHelp">¿Necesitas ayuda?</h3>
+                <p data-i18n="confirm.helpText">Si tienes alguna pregunta sobre tu pedido, no dudes en contactarnos:</p>
+                <p><strong>Email:</strong> hola@llulls.com</p>
+                <p><strong>WhatsApp:</strong> +34 600 000 000</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderData = localStorage.getItem('llulls_last_order');
+            
+            if (!orderData) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const order = JSON.parse(orderData);
+            const sizeLabel = typeof i18n !== 'undefined' ? i18n.t('products.size') : 'Talla';
+            const freeLabel = typeof i18n !== 'undefined' ? i18n.t('checkout.free') : 'Gratis';
+            
+            // Order number and email
+            document.getElementById('orderNumber').textContent = order.orderNumber;
+            document.getElementById('customerEmail').textContent = order.shipping.email;
+
+            // Shipping address
+            document.getElementById('confirmShipping').innerHTML = `
+                <p>${order.shipping.firstName} ${order.shipping.lastName}</p>
+                <p>${order.shipping.address}${order.shipping.address2 ? ', ' + order.shipping.address2 : ''}</p>
+                <p>${order.shipping.postalCode} ${order.shipping.city}</p>
+                <p>${order.shipping.phone}</p>
+            `;
+
+            // Payment method
+            const paymentMethods = {
+                'card': typeof i18n !== 'undefined' ? i18n.t('checkout.card') : 'Tarjeta de crédito/débito',
+                'paypal': 'PayPal',
+                'googlepay': 'Google Pay',
+                'applepay': 'Apple Pay'
+            };
+            document.getElementById('confirmPayment').innerHTML = `<p>${paymentMethods[order.paymentMethod]}</p>`;
+
+            // Shipping method
+            const shippingMethods = {
+                'standard': (typeof i18n !== 'undefined' ? i18n.t('checkout.standard') : 'Envío estándar') + ' (3-5 ' + (typeof i18n !== 'undefined' ? i18n.t('checkout.standardTime').split(' ')[0] : 'días') + ')',
+                'express': (typeof i18n !== 'undefined' ? i18n.t('checkout.express') : 'Envío express') + ' (1-2 ' + (typeof i18n !== 'undefined' ? i18n.t('checkout.expressTime').split(' ')[0] : 'días') + ')',
+                'free': (typeof i18n !== 'undefined' ? i18n.t('checkout.freeShipping') : 'Envío gratis') + ' (3-5 ' + (typeof i18n !== 'undefined' ? i18n.t('checkout.standardTime').split(' ')[0] : 'días') + ')'
+            };
+            document.getElementById('confirmShippingMethod').innerHTML = `<p>${shippingMethods[order.shippingMethod]}</p>`;
+
+            // Order items
+            let itemsHtml = '';
+            order.items.forEach(item => {
+                itemsHtml += `
+                    <div class="confirm-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="item-info">
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-variant">${sizeLabel}: ${item.size} × ${item.quantity}</span>
+                        </div>
+                        <span class="item-price">${item.price * item.quantity}€</span>
+                    </div>
+                `;
+            });
+            document.getElementById('confirmItems').innerHTML = itemsHtml;
+
+            // Totals
+            document.getElementById('confirmSubtotal').textContent = order.subtotal + '€';
+            document.getElementById('confirmShippingCost').textContent = order.shippingCost === 0 ? freeLabel : order.shippingCost.toFixed(2).replace('.', ',') + '€';
+            document.getElementById('confirmTotal').textContent = order.total.toFixed(2).replace('.', ',') + '€';
+        });
+    </script>
+</body>
+</html>

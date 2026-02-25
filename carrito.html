@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu carrito - Llull's</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart-checkout.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <header class="logo-header">
+        <a href="index.html" class="back-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <div class="logo-center">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Llull's Logo" class="logo-centered">
+            </a>
+        </div>
+        <a href="carrito.html" class="cart-icon" data-i18n-aria="cart.label" aria-label="Carrito">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span class="cart-badge">0</span>
+        </a>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            <h1 class="cart-title" data-i18n="cart.title">Tu carrito</h1>
+            
+            <div id="cartContent">
+                <!-- Cart items will be inserted here by JavaScript -->
+            </div>
+
+            <div id="emptyCart" class="empty-cart" style="display: none;">
+                <div class="empty-cart-icon">🛒</div>
+                <h2 data-i18n="cart.empty">Tu carrito está vacío</h2>
+                <p data-i18n="cart.emptyDesc">¡Añade alguna prenda para tu galgo!</p>
+                <a href="index.html" class="continue-shopping-btn" data-i18n="cart.viewProducts">Ver productos</a>
+            </div>
+
+            <div id="cartSummary" class="cart-summary" style="display: none;">
+                <div class="summary-row">
+                    <span data-i18n="cart.subtotal">Subtotal</span>
+                    <span id="subtotal">0€</span>
+                </div>
+                <div class="summary-row">
+                    <span data-i18n="cart.shipping">Envío</span>
+                    <span id="shipping" data-i18n="cart.shippingCalc">Calculado en checkout</span>
+                </div>
+                <div class="summary-row total">
+                    <span data-i18n="cart.total">Total</span>
+                    <span id="total">0€</span>
+                </div>
+                <a href="checkout.html" class="checkout-btn" data-i18n="cart.checkout">Proceder al pago</a>
+                <a href="index.html" class="continue-shopping-link" data-i18n="cart.continueShopping">← Seguir comprando</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCart();
+        });
+
+        function renderCart() {
+            const cart = Cart.getCart();
+            const cartContent = document.getElementById('cartContent');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartSummary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                cartContent.style.display = 'none';
+                emptyCart.style.display = 'flex';
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            emptyCart.style.display = 'none';
+            cartContent.style.display = 'block';
+            cartSummary.style.display = 'block';
+
+            const sizeLabel = typeof i18n !== 'undefined' ? i18n.t('products.size') : 'Talla';
+            let html = '<div class="cart-items">';
+            
+            cart.forEach(item => {
+                html += `
+                    <div class="cart-item" data-id="${item.id}" data-size="${item.size}">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">${item.name}</h3>
+                            <p class="cart-item-size">${sizeLabel}: ${item.size}</p>
+                            <p class="cart-item-price">${item.price}€</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="qty-btn minus" onclick="updateItemQuantity('${item.id}', '${item.size}', ${item.quantity - 1})">−</button>
+                            <span class="qty-value">${item.quantity}</span>
+                            <button class="qty-btn plus" onclick="updateItemQuantity('${item.id}', '${item.size}', ${item.quantity + 1})">+</button>
+                        </div>
+                        <div class="cart-item-total">
+                            <span>${item.price * item.quantity}€</span>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeItem('${item.id}', '${item.size}')" aria-label="Eliminar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            cartContent.innerHTML = html;
+
+            // Update totals
+            const subtotal = Cart.getTotal();
+            document.getElementById('subtotal').textContent = subtotal + '€';
+            document.getElementById('total').textContent = subtotal + '€';
+        }
+
+        function updateItemQuantity(productId, size, quantity) {
+            Cart.updateQuantity(productId, size, quantity);
+            renderCart();
+        }
+
+        function removeItem(productId, size) {
+            Cart.removeItem(productId, size);
+            renderCart();
+            const removeMsg = typeof i18n !== 'undefined' ? i18n.t('cart.removeItem') : 'Producto eliminado del carrito';
+            showToast(removeMsg);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jersey manga larga - Llull's</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product-detail.css">
+    <link rel="stylesheet" href="../css/cart-checkout.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <header class="logo-header">
+        <a href="../index.html" class="back-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <div class="logo-center">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Llull's Logo" class="logo-centered">
+            </a>
+        </div>
+        <a href="../carrito.html" class="cart-icon" data-i18n-aria="cart.label" aria-label="Carrito">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span class="cart-badge">0</span>
+        </a>
+    </header>
+
+    <main class="product-detail-page">
+        <div class="product-detail-container">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="../img/pijama.png" alt="Jersey manga larga para galgo" id="mainImage">
+                </div>
+                <div class="thumbnail-row">
+                    <img src="../img/pijama.png" alt="Vista frontal" class="thumbnail active" onclick="changeImage(this)">
+                    <img src="../img/dog-placeholder-3.jpg.jpeg" alt="Modelo Bella" class="thumbnail" onclick="changeImage(this)">
+                    <img src="../img/dog-placeholder-4.jpg.jpeg" alt="Modelo Rocky" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 class="product-title" data-i18n="products.longsleeve">Jersey manga larga</h1>
+                <p class="product-price-detail">40€</p>
+                
+                <div class="product-description">
+                    <p data-i18n="longsleeve.desc">Mayor cobertura y calidez para los días más frescos. El jersey de manga larga ofrece protección completa para las patas delanteras de tu galgo, ideal para paseos en días fríos o para descansar en casa.</p>
+                    
+                    <h3 data-i18n="detail.features">Características</h3>
+                    <ul class="features-list">
+                        <li><strong data-i18n="longsleeve.feature1">Cobertura completa:</strong> <span data-i18n="longsleeve.feature1Desc">Mangas largas que protegen las patas delanteras</span></li>
+                        <li><strong data-i18n="longsleeve.feature2">Tejido premium:</strong> <span data-i18n="longsleeve.feature2Desc">Algodón orgánico con elastano para máximo confort</span></li>
+                        <li><strong data-i18n="longsleeve.feature3">Diseño ergonómico:</strong> <span data-i18n="longsleeve.feature3Desc">Corte especial para el pecho profundo del galgo</span></li>
+                        <li><strong data-i18n="longsleeve.feature4">Fácil de poner:</strong> <span data-i18n="longsleeve.feature4Desc">Abertura amplia que facilita vestir a tu galgo</span></li>
+                    </ul>
+
+                    <h3 data-i18n="detail.materials">Materiales</h3>
+                    <p data-i18n="longsleeve.materials">95% Algodón orgánico, 5% Elastano. French terry de peso medio, suave por dentro.</p>
+
+                    <h3 data-i18n="detail.care">Cuidados</h3>
+                    <p data-i18n="longsleeve.care">Lavar en frío. Secar al aire. No usar secadora.</p>
+                </div>
+
+                <div class="size-selection">
+                    <h3 data-i18n="detail.selectSize">Selecciona tu talla</h3>
+                    <div class="size-buttons">
+                        <button class="size-btn-detail" data-size="S">S</button>
+                        <button class="size-btn-detail" data-size="M">M</button>
+                        <button class="size-btn-detail" data-size="L">L</button>
+                    </div>
+                </div>
+
+                <button class="add-to-cart-detail" data-i18n="products.addToCart">
+                    Añadir a la cesta
+                </button>
+
+                <div class="breed-fit">
+                    <h3 data-i18n="detail.breedFit">Razas compatibles</h3>
+                    <p data-i18n="detail.breedList">Galgo español, Galgo inglés (Greyhound), Whippet grande, Lurcher, Podenco, Galgo italiano grande</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="size-chart-section">
+            <h2 data-i18n="size.title">Guía de tallas</h2>
+            
+            <div class="how-to-measure">
+                <h3 data-i18n="size.howToMeasure">Cómo medir a tu galgo</h3>
+                <div class="measure-instructions">
+                    <div class="measure-item">
+                        <div class="measure-icon">📏</div>
+                        <h4 data-i18n="size.chest">Pecho</h4>
+                        <p data-i18n="size.chestDesc">Mide alrededor del pecho de tu galgo, justo debajo de las patas delanteras. Hazlo ajustado ya que es una prenda elástica que se estirará para adaptarse.</p>
+                    </div>
+                    <div class="measure-item">
+                        <div class="measure-icon">📐</div>
+                        <h4 data-i18n="size.length">Largo</h4>
+                        <p data-i18n="size.lengthDesc">Mide desde la base del cuello (con la cabeza levantada) hasta el inicio de la cola. Imagina una línea invisible en su trasero y mide hasta ese punto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="size-table-container">
+                <table class="size-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="products.size">Talla</th>
+                            <th><span data-i18n="size.chest">Pecho</span> (cm)</th>
+                            <th><span data-i18n="size.length">Largo</span> (cm)</th>
+                            <th data-i18n="size.weight">Peso aprox.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>S</strong></td>
+                            <td>58 - 66</td>
+                            <td>55 - 62</td>
+                            <td>20 - 26 kg</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M</strong></td>
+                            <td>66 - 74</td>
+                            <td>62 - 70</td>
+                            <td>26 - 32 kg</td>
+                        </tr>
+                        <tr>
+                            <td><strong>L</strong></td>
+                            <td>74 - 82</td>
+                            <td>70 - 78</td>
+                            <td>32 - 38 kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="size-tips">
+                <h3 data-i18n="size.tips">Consejos de ajuste</h3>
+                <ul>
+                    <li data-i18n="size.tip1">Elige la talla basándote en la medida del pecho de tu galgo.</li>
+                    <li data-i18n="size.tip2">Si tu galgo está entre dos tallas, elige la talla superior.</li>
+                    <li data-i18n="size.tip3">Los jerseys de manga larga ofrecen mayor protección en días fríos.</li>
+                    <li data-i18n="size.tip4Longsleeve">Para poner las mangas, sujeta la pata de tu galgo y guíala suavemente por la manga hasta el puño.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="warmth-factor-section">
+            <h2 data-i18n="warmth.title">Factor de calidez</h2>
+            <div class="warmth-scale">
+                <div class="warmth-level">
+                    <span class="warmth-number">1</span>
+                    <span class="warmth-label" data-i18n="warmth.light">Ligero</span>
+                </div>
+                <div class="warmth-level active">
+                    <span class="warmth-number">2</span>
+                    <span class="warmth-label" data-i18n="warmth.soft">Suave</span>
+                </div>
+                <div class="warmth-level">
+                    <span class="warmth-number">3</span>
+                    <span class="warmth-label" data-i18n="warmth.medium">Medio</span>
+                </div>
+                <div class="warmth-level">
+                    <span class="warmth-number">4</span>
+                    <span class="warmth-label" data-i18n="warmth.warm">Cálido</span>
+                </div>
+                <div class="warmth-level">
+                    <span class="warmth-number">5</span>
+                    <span class="warmth-label" data-i18n="warmth.veryWarm">Muy cálido</span>
+                </div>
+            </div>
+            <p class="warmth-description" data-i18n="warmth.descLongsleeve">Mayor cobertura para días frescos. Una opción ligera y acogedora perfecta para paseos casuales o para relajarse en casa.</p>
+        </section>
+    </main>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/product-detail.js"></script>
+</body>
+</html>

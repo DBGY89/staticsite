@@ -1,0 +1,484 @@
+/* Product Detail Page Styles */
+
+.back-link {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.back-link:hover {
+    background: rgba(46, 196, 198, 0.1);
+}
+
+.product-detail-page {
+    padding: 0;
+}
+
+.product-detail-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 3rem;
+}
+
+/* Product Gallery */
+.product-gallery {
+    flex: 1;
+    max-width: 550px;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #f8f9fa;
+    margin-bottom: 1rem;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.thumbnail-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: #2EC4C6;
+}
+
+/* Product Info */
+.product-info {
+    flex: 1;
+    max-width: 500px;
+}
+
+.product-title {
+    font-size: 2rem;
+    color: #003845;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.product-price-detail {
+    font-size: 1.75rem;
+    color: #F26C63;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.product-description {
+    margin-bottom: 1.5rem;
+}
+
+.product-description p {
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.product-description h3 {
+    color: #003845;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #4a5568;
+}
+
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2EC4C6;
+    font-weight: bold;
+}
+
+/* Size Selection */
+.size-selection {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.size-selection h3 {
+    color: #003845;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.size-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.size-btn-detail {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #d1d5db;
+    background: #fff;
+    color: #003845;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.size-btn-detail:hover {
+    border-color: #2EC4C6;
+}
+
+.size-btn-detail.selected {
+    background: #2EC4C6;
+    color: #fff;
+    border-color: #2EC4C6;
+}
+
+/* Add to Cart Button */
+.add-to-cart-detail {
+    width: 100%;
+    background: #F26C63;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-bottom: 1.5rem;
+}
+
+.add-to-cart-detail:hover {
+    background: #d94e3f;
+    transform: translateY(-2px);
+}
+
+.add-to-cart-detail:active {
+    transform: translateY(0);
+}
+
+/* Breed Fit */
+.breed-fit {
+    background: #f0fafa;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid #2EC4C6;
+}
+
+.breed-fit h3 {
+    color: #003845;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.breed-fit p {
+    color: #4a5568;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Size Chart Section */
+.size-chart-section {
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+}
+
+.size-chart-section h2 {
+    text-align: center;
+    color: #003845;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+.how-to-measure {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+}
+
+.how-to-measure h3 {
+    color: #003845;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.measure-instructions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.measure-item {
+    flex: 1;
+    max-width: 350px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 56, 69, 0.08);
+}
+
+.measure-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.measure-item h4 {
+    color: #003845;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.measure-item p {
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Size Table */
+.size-table-container {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    overflow-x: auto;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 56, 69, 0.08);
+}
+
+.size-table th,
+.size-table td {
+    padding: 1rem 1.25rem;
+    text-align: center;
+}
+
+.size-table th {
+    background: #2EC4C6;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.size-table td {
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.size-table tr:last-child td {
+    border-bottom: none;
+}
+
+.size-table tr:hover td {
+    background: #f0fafa;
+}
+
+/* Size Tips */
+.size-tips {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 56, 69, 0.08);
+}
+
+.size-tips h3 {
+    color: #003845;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.size-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.size-tips li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+.size-tips li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2EC4C6;
+    font-weight: bold;
+}
+
+/* Warmth Factor Section */
+.warmth-factor-section {
+    background: #003845;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.warmth-factor-section h2 {
+    color: #FFD166;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.warmth-scale {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.warmth-level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    min-width: 80px;
+    transition: all 0.2s;
+}
+
+.warmth-level.active {
+    background: #2EC4C6;
+    transform: scale(1.1);
+}
+
+.warmth-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.warmth-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.warmth-level.active .warmth-label {
+    color: #fff;
+}
+
+.warmth-description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .product-detail-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .product-gallery,
+    .product-info {
+        max-width: 100%;
+    }
+
+    .measure-instructions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .measure-item {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-title {
+        font-size: 1.5rem;
+    }
+
+    .product-price-detail {
+        font-size: 1.5rem;
+    }
+
+    .thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+
+    .size-chart-section {
+        padding: 2rem 1rem;
+    }
+
+    .warmth-scale {
+        gap: 0.5rem;
+    }
+
+    .warmth-level {
+        min-width: 60px;
+        padding: 0.75rem;
+    }
+
+    .warmth-number {
+        font-size: 1.25rem;
+    }
+
+    .warmth-label {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Llull's</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart-checkout.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <header class="logo-header checkout-header">
+        <a href="carrito.html" class="back-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <div class="logo-center">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Llull's Logo" class="logo-centered">
+            </a>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span data-i18n="checkout.secure">Pago seguro</span>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-container">
+            <!-- Progress Steps -->
+            <div class="checkout-progress">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label" data-i18n="checkout.step1">Envío</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label" data-i18n="checkout.step2">Pago</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label" data-i18n="checkout.step3">Confirmar</span>
+                </div>
+            </div>
+
+            <div class="checkout-content">
+                <!-- Left Column: Forms -->
+                <div class="checkout-forms">
+                    <!-- Step 1: Shipping -->
+                    <section id="step1" class="checkout-step active">
+                        <h2 data-i18n="checkout.shippingInfo">Información de envío</h2>
+                        
+                        <form id="shippingForm" class="checkout-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName"><span data-i18n="checkout.firstName">Nombre</span> *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName"><span data-i18n="checkout.lastName">Apellidos</span> *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email"><span data-i18n="checkout.email">Email</span> *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone"><span data-i18n="checkout.phone">Teléfono</span> *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address"><span data-i18n="checkout.address">Dirección</span> *</label>
+                                <input type="text" id="address" name="address" data-i18n-placeholder="checkout.addressPlaceholder" placeholder="Calle y número" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address2" data-i18n="checkout.address2">Piso, puerta, etc. (opcional)</label>
+                                <input type="text" id="address2" name="address2" data-i18n-placeholder="checkout.address2Placeholder" placeholder="Apartamento, piso, etc.">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city"><span data-i18n="checkout.city">Ciudad</span> *</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode"><span data-i18n="checkout.postalCode">Código postal</span> *</label>
+                                    <input type="text" id="postalCode" name="postalCode" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="province">Provincia *</label>
+                                <select id="province" name="province" required>
+                                    <option value="">Selecciona provincia</option>
+                                    <option value="alava">Álava</option>
+                                    <option value="albacete">Albacete</option>
+                                    <option value="alicante">Alicante</option>
+                                    <option value="almeria">Almería</option>
+                                    <option value="asturias">Asturias</option>
+                                    <option value="avila">Ávila</option>
+                                    <option value="badajoz">Badajoz</option>
+                                    <option value="barcelona">Barcelona</option>
+                                    <option value="burgos">Burgos</option>
+                                    <option value="caceres">Cáceres</option>
+                                    <option value="cadiz">Cádiz</option>
+                                    <option value="cantabria">Cantabria</option>
+                                    <option value="castellon">Castellón</option>
+                                    <option value="ciudadreal">Ciudad Real</option>
+                                    <option value="cordoba">Córdoba</option>
+                                    <option value="cuenca">Cuenca</option>
+                                    <option value="girona">Girona</option>
+                                    <option value="granada">Granada</option>
+                                    <option value="guadalajara">Guadalajara</option>
+                                    <option value="guipuzcoa">Guipúzcoa</option>
+                                    <option value="huelva">Huelva</option>
+                                    <option value="huesca">Huesca</option>
+                                    <option value="jaen">Jaén</option>
+                                    <option value="larioja">La Rioja</option>
+                                    <option value="laspalmas">Las Palmas</option>
+                                    <option value="leon">León</option>
+                                    <option value="lleida">Lleida</option>
+                                    <option value="lugo">Lugo</option>
+                                    <option value="madrid">Madrid</option>
+                                    <option value="malaga">Málaga</option>
+                                    <option value="murcia">Murcia</option>
+                                    <option value="navarra">Navarra</option>
+                                    <option value="ourense">Ourense</option>
+                                    <option value="palencia">Palencia</option>
+                                    <option value="pontevedra">Pontevedra</option>
+                                    <option value="salamanca">Salamanca</option>
+                                    <option value="tenerife">Santa Cruz de Tenerife</option>
+                                    <option value="segovia">Segovia</option>
+                                    <option value="sevilla">Sevilla</option>
+                                    <option value="soria">Soria</option>
+                                    <option value="tarragona">Tarragona</option>
+                                    <option value="teruel">Teruel</option>
+                                    <option value="toledo">Toledo</option>
+                                    <option value="valencia">Valencia</option>
+                                    <option value="valladolid">Valladolid</option>
+                                    <option value="vizcaya">Vizcaya</option>
+                                    <option value="zamora">Zamora</option>
+                                    <option value="zaragoza">Zaragoza</option>
+                                </select>
+                            </div>
+
+                            <div class="shipping-options">
+                                <h3>Método de envío</h3>
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="standard" data-price="4.95" checked>
+                                    <div class="option-content">
+                                        <div class="option-info">
+                                            <span class="option-name">Envío estándar</span>
+                                            <span class="option-time">3-5 días laborables</span>
+                                        </div>
+                                        <span class="option-price">4,95€</span>
+                                    </div>
+                                </label>
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="express" data-price="9.95">
+                                    <div class="option-content">
+                                        <div class="option-info">
+                                            <span class="option-name">Envío express</span>
+                                            <span class="option-time">1-2 días laborables</span>
+                                        </div>
+                                        <span class="option-price">9,95€</span>
+                                    </div>
+                                </label>
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="free" data-price="0" id="freeShipping" disabled>
+                                    <div class="option-content">
+                                        <div class="option-info">
+                                            <span class="option-name">Envío gratis</span>
+                                            <span class="option-time">3-5 días laborables</span>
+                                        </div>
+                                        <span class="option-price free-label">Pedidos +60€</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="continue-btn">Continuar al pago</button>
+                        </form>
+                    </section>
+
+                    <!-- Step 2: Payment -->
+                    <section id="step2" class="checkout-step">
+                        <h2>Método de pago</h2>
+
+                        <div class="payment-methods">
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <div class="method-content">
+                                    <div class="method-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                            <line x1="1" y1="10" x2="23" y2="10"/>
+                                        </svg>
+                                    </div>
+                                    <span class="method-name">Tarjeta de crédito/débito</span>
+                                    <div class="card-brands">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 30'%3E%3Crect fill='%231A1F71' width='50' height='30' rx='4'/%3E%3Ctext x='25' y='19' font-family='Arial' font-size='12' font-weight='bold' fill='white' text-anchor='middle'%3EVISA%3C/text%3E%3C/svg%3E" alt="Visa" width="40">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 30'%3E%3Crect fill='%23000' width='50' height='30' rx='4'/%3E%3Ccircle cx='20' cy='15' r='9' fill='%23EB001B'/%3E%3Ccircle cx='30' cy='15' r='9' fill='%23F79E1B'/%3E%3C/svg%3E" alt="Mastercard" width="40">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="paypal">
+                                <div class="method-content">
+                                    <div class="method-icon paypal-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#003087">
+                                            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="method-name">PayPal</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="googlepay">
+                                <div class="method-content">
+                                    <div class="method-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#4285F4" d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="method-name">Google Pay</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="applepay">
+                                <div class="method-content">
+                                    <div class="method-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="method-name">Apple Pay</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Card Form -->
+                        <div id="cardForm" class="card-form">
+                            <div class="form-group">
+                                <label for="cardNumber">Número de tarjeta *</label>
+                                <div class="card-input-wrapper">
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                    <span class="card-icon" id="cardTypeIcon"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cardName">Nombre en la tarjeta *</label>
+                                <input type="text" id="cardName" name="cardName" placeholder="Como aparece en la tarjeta">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Fecha de expiración *</label>
+                                    <input type="text" id="expiry" name="expiry" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV *</label>
+                                    <div class="cvv-wrapper">
+                                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                                        <span class="cvv-help" title="Los 3 dígitos en el reverso de tu tarjeta">?</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PayPal/Google Pay/Apple Pay placeholder -->
+                        <div id="altPaymentInfo" class="alt-payment-info" style="display: none;">
+                            <p>Serás redirigido a <span id="paymentProviderName">PayPal</span> para completar tu pago de forma segura.</p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="back-btn" onclick="goToStep(1)">← Volver</button>
+                            <button type="button" class="continue-btn" onclick="goToStep(3)">Revisar pedido</button>
+                        </div>
+                    </section>
+
+                    <!-- Step 3: Review & Confirm -->
+                    <section id="step3" class="checkout-step">
+                        <h2>Revisa tu pedido</h2>
+
+                        <div class="review-section">
+                            <div class="review-block">
+                                <div class="review-header">
+                                    <h3>Dirección de envío</h3>
+                                    <button type="button" class="edit-btn" onclick="goToStep(1)">Editar</button>
+                                </div>
+                                <div id="reviewShipping" class="review-content">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+
+                            <div class="review-block">
+                                <div class="review-header">
+                                    <h3>Método de pago</h3>
+                                    <button type="button" class="edit-btn" onclick="goToStep(2)">Editar</button>
+                                </div>
+                                <div id="reviewPayment" class="review-content">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+
+                            <div class="review-block">
+                                <div class="review-header">
+                                    <h3>Productos</h3>
+                                    <a href="carrito.html" class="edit-btn">Editar</a>
+                                </div>
+                                <div id="reviewProducts" class="review-products">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terms-checkbox">
+                            <label>
+                                <input type="checkbox" id="acceptTerms" required>
+                                <span>He leído y acepto los <a href="#" target="_blank">términos y condiciones</a> y la <a href="#" target="_blank">política de privacidad</a></span>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="back-btn" onclick="goToStep(2)">← Volver</button>
+                            <button type="button" class="place-order-btn" onclick="placeOrder()">
+                                <span class="btn-text">Confirmar y pagar</span>
+                                <span class="btn-amount" id="finalAmount">0€</span>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: Order Summary -->
+                <aside class="order-summary">
+                    <h3>Resumen del pedido</h3>
+                    <div id="summaryItems" class="summary-items">
+                        <!-- Filled by JS -->
+                    </div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="checkoutSubtotal">0€</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Envío</span>
+                            <span id="checkoutShipping">4,95€</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="checkoutTotal">0€</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

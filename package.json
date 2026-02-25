@@ -1,0 +1,17 @@
+{
+  "name": "simple-markdown-website",
+  "version": "1.0.0",
+  "description": "A simple static website with Markdown support",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server dist -c-1",
+    "build": "node build.js",
+    "dev": "node build.js && npx http-server dist -c-1"
+  },
+  "dependencies": {
+    "marked": "^4.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
