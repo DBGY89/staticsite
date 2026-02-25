@@ -1166,18 +1166,42 @@
 @media (max-width: 600px) {
     .cart-item {
         flex-wrap: wrap;
+        position: relative;
+        padding-right: 2.5rem;
+    }
+
+    .cart-item-image {
+        width: 70px;
+        height: 70px;
     }
 
     .cart-item-details {
-        width: calc(100% - 100px);
+        flex: 1;
+        min-width: 0;
+        max-width: calc(100% - 90px);
+    }
+
+    .cart-item-name {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .cart-item-quantity {
-        margin-left: auto;
+        width: 100%;
+        margin-top: 0.75rem;
+        padding-left: 80px;
     }
 
     .cart-item-total {
         display: none;
+    }
+
+    .remove-item-btn {
+        position: absolute;
+        top: 1rem;
+        right: 0.5rem;
     }
 
     .form-row {
