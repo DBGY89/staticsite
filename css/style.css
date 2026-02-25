@@ -686,6 +686,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .lang-selector {
+        right: 1rem;
+        top: 1rem;
+    }
+    
     .carousel-container {
         padding: 0;
         display: flex;
