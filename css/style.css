@@ -745,16 +745,16 @@ footer {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        padding: 0 1.5rem 1rem;
+        padding: 0 1.5rem 1rem 1.5rem;
         scrollbar-width: none;
     }
     .product-cards::-webkit-scrollbar {
         display: none;
     }
     .product-card {
-        flex: 0 0 calc(100% - 4rem);
+        flex: 0 0 calc(100vw - 4.5rem);
         scroll-snap-align: start;
-        min-width: 0;
+        min-width: calc(100vw - 4.5rem);
     }
     .historias-section h2 {
         padding: 0 1.5rem;
