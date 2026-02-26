@@ -739,30 +739,9 @@ footer {
         padding: 0 1.5rem;
     }
     .product-cards {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        gap: 1rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        -webkit-scroll-snap-type: x mandatory;
-        padding: 0 1rem 1rem 1rem;
-        scroll-padding-left: 1rem;
-        scrollbar-width: none;
-    }
-    .product-cards::-webkit-scrollbar {
-        display: none;
-    }
-    .product-card {
-        flex: 0 0 70vw !important;
-        min-width: 70vw !important;
-        max-width: 70vw !important;
-        width: 70vw !important;
-        flex-shrink: 0 !important;
-        scroll-snap-align: start;
-        margin-bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
     .historias-section h2 {
         padding: 0 1.5rem;
