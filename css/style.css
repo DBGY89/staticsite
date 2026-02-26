@@ -692,51 +692,7 @@ footer {
     }
     
     .historias-section {
-        padding: 0;
-    }
-    
-    .carousel-container {
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-    .carousel {
-        justify-content: center;
-        align-items: stretch;
-        display: flex;
-        height: auto;
-        width: 100%;
-        gap: 0;
-    }
-    .carousel-item {
-        width: 100%;
-        max-width: none;
-        min-width: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        height: 100%;
-    }
-    .dog-card {
-        min-height: auto;
-        max-height: none;
-        width: 100%;
-        border-radius: 0;
-    }
-    .dog-image {
-        object-fit: contain;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4/3;
-        flex-shrink: 0;
-        border-radius: 0;
-        background: #f8f9fa;
-    }
-    .dog-card h3 {
-        border-radius: 0;
+        display: none;
     }
 }
 
