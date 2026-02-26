@@ -315,7 +315,7 @@ footer {
 }
 
 .armario-section {
-    background: #fff;
+    background: #f5f5f3;
     padding: 3rem 0 2rem 0;
     text-align: center;
     width: 100%;
@@ -342,7 +342,7 @@ footer {
     margin: 0;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,56,69,0.08);
+    box-shadow: none;
     width: 324px;
     display: flex;
     flex-direction: column;
@@ -353,11 +353,10 @@ footer {
     min-height: 480px;
     justify-content: flex-start;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
 }
 .product-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(242,108,99,0.15);
+    transform: translateY(-4px);
 }
 .product-card > img {
     width: 100%;
