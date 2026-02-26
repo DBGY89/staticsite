@@ -752,7 +752,7 @@ footer {
         display: none;
     }
     .product-card {
-        flex: 0 0 80%;
+        flex: 0 0 calc(100% - 4rem);
         scroll-snap-align: start;
         min-width: 0;
     }
