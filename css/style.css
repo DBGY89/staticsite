@@ -739,8 +739,10 @@ footer {
         padding: 0 1.5rem;
     }
     .product-cards {
-        display: flex;
-        flex-direction: row;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
         gap: 1rem;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -754,11 +756,13 @@ footer {
         display: none;
     }
     .product-card {
-        flex: 0 0 70vw;
-        min-width: 70vw;
-        flex-shrink: 0;
+        flex: 0 0 70vw !important;
+        min-width: 70vw !important;
+        max-width: 70vw !important;
+        width: 70vw !important;
+        flex-shrink: 0 !important;
         scroll-snap-align: start;
-        width: auto;
+        margin-bottom: 0;
     }
     .historias-section h2 {
         padding: 0 1.5rem;
