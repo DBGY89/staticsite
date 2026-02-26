@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuestas Carrusel Mobile - Llull's</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart-checkout.css">
+    <style>
+        /* Page Layout */
+        .proposals-page {
+            padding: 1rem;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .proposal-section {
+            margin-bottom: 3rem;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .proposal-title {
+            color: #003845;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .proposal-badge {
+            background: #2EC4C6;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 1rem;
+            font-weight: 600;
+        }
+        
+        .proposal-desc {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+        
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2EC4C6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-title {
+            color: #003845;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        /* =====================
+           PROPUESTA 1: Cards Horizontales con Swipe
+           ===================== */
+        .p1-carousel {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+        }
+        
+        .p1-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .p1-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: row;
+            min-height: 160px;
+        }
+        
+        .p1-image {
+            width: 45%;
+            min-height: 160px;
+            overflow: hidden;
+        }
+        
+        .p1-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .p1-content {
+            width: 55%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .p1-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .p1-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #003845;
+            line-height: 1.3;
+            margin: 0;
+        }
+        
+        .p1-price {
+            color: #F26C63;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .p1-sizes {
+            display: flex;
+            gap: 0.4rem;
+            margin: 0.75rem 0;
+        }
+        
+        .p1-size-btn {
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid #d1d5db;
+            background: #fff;
+            color: #003845;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .p1-size-btn.selected {
+            background: #2EC4C6;
+            color: #fff;
+            border-color: #2EC4C6;
+        }
+        
+        .p1-add-btn {
+            background: #62BEC1;
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        
+        .p1-add-btn:hover {
+            background: #2EC4C6;
+        }
+        
+        .p1-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .p1-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: all 0.2s;
+        }
+        
+        .p1-dot.active {
+            background: #2EC4C6;
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* =====================
+           PROPUESTA 2: Cards Verticales Compactas
+           ===================== */
+        .p2-carousel {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+        }
+        
+        .p2-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .p2-card {
+            flex: 0 0 70%;
+            scroll-snap-align: start;
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .p2-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .p2-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .p2-price-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: #F26C63;
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .p2-content {
+            padding: 1rem;
+        }
+        
+        .p2-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #003845;
+            margin: 0 0 0.75rem 0;
+        }
+        
+        .p2-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        
+        .p2-sizes {
+            display: flex;
+            gap: 0.35rem;
+        }
+        
+        .p2-size-btn {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid #d1d5db;
+            background: #fff;
+            color: #003845;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .p2-size-btn.selected {
+            background: #2EC4C6;
+            color: #fff;
+            border-color: #2EC4C6;
+        }
+        
+        .p2-add-btn {
+            background: #62BEC1;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .p2-add-btn:hover {
+            background: #2EC4C6;
+        }
+        
+        .p2-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .p2-progress-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #d1d5db;
+        }
+        
+        .p2-progress-dot.active {
+            background: #2EC4C6;
+        }
+
+        /* =====================
+           PROPUESTA 3: Stack Cards con Preview
+           ===================== */
+        .p3-container {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .p3-carousel {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem;
+            scrollbar-width: none;
+        }
+        
+        .p3-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .p3-card {
+            flex: 0 0 calc(100% - 3rem);
+            scroll-snap-align: center;
+            background: linear-gradient(145deg, #fff 0%, #f8fafa 100%);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,56,69,0.1);
+            position: relative;
+        }
+        
+        .p3-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .p3-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .p3-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(255,255,255,0.9));
+        }
+        
+        .p3-content {
+            padding: 1rem 1.25rem 1.25rem;
+            position: relative;
+            margin-top: -20px;
+        }
+        
+        .p3-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .p3-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #003845;
+            margin: 0;
+        }
+        
+        .p3-price {
+            color: #F26C63;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        
+        .p3-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .p3-sizes {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .p3-size-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #e5e7eb;
+            background: #fff;
+            color: #003845;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .p3-size-btn.selected {
+            background: #003845;
+            color: #fff;
+            border-color: #003845;
+        }
+        
+        .p3-add-btn {
+            background: linear-gradient(135deg, #2EC4C6 0%, #62BEC1 100%);
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(46,196,198,0.3);
+        }
+        
+        .p3-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46,196,198,0.4);
+        }
+        
+        .p3-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        
+        .p3-nav-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: #003845;
+            transition: all 0.2s;
+        }
+        
+        .p3-nav-btn:hover {
+            background: #2EC4C6;
+            color: #fff;
+        }
+        
+        .p3-counter {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .p3-counter strong {
+            color: #003845;
+        }
+
+        /* Toast for demo */
+        .demo-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2EC4C6;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="proposals-page">
+        <a href="index.html" class="back-to-home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver a la tienda
+        </a>
+        
+        <h1 class="page-title">Propuestas Mobile</h1>
+        <p class="page-subtitle">Tres opciones de carrusel para la sección de productos</p>
+
+        <!-- PROPUESTA 1 -->
+        <section class="proposal-section">
+            <h2 class="proposal-title">
+                <span class="proposal-badge">1</span>
+                Cards Horizontales
+            </h2>
+            <p class="proposal-desc">
+                Layout horizontal que muestra imagen y detalles lado a lado. Ideal para visualizar rápidamente la información sin scroll vertical. Swipe para navegar.
+            </p>
+            
+            <div class="p1-carousel" id="p1Carousel">
+                <div class="p1-card" data-product-id="jersey-sin-mangas" data-product-name="Jersey sin mangas" data-product-price="30" data-product-image="img/abrigo.png">
+                    <div class="p1-image">
+                        <a href="productos/jersey-sin-mangas.html">
+                            <img src="img/abrigo.png" alt="Jersey sin mangas">
+                        </a>
+                    </div>
+                    <div class="p1-content">
+                        <div>
+                            <div class="p1-header">
+                                <h3 class="p1-name">Jersey sin mangas</h3>
+                            </div>
+                            <span class="p1-price">30€</span>
+                            <div class="p1-sizes">
+                                <button class="p1-size-btn" data-size="S">S</button>
+                                <button class="p1-size-btn" data-size="M">M</button>
+                                <button class="p1-size-btn" data-size="L">L</button>
+                            </div>
+                        </div>
+                        <button class="p1-add-btn">Añadir a la cesta</button>
+                    </div>
+                </div>
+                
+                <div class="p1-card" data-product-id="jersey-manga-larga" data-product-name="Jersey manga larga" data-product-price="40" data-product-image="img/pijama.png">
+                    <div class="p1-image">
+                        <a href="productos/jersey-manga-larga.html">
+                            <img src="img/pijama.png" alt="Jersey manga larga">
+                        </a>
+                    </div>
+                    <div class="p1-content">
+                        <div>
+                            <div class="p1-header">
+                                <h3 class="p1-name">Jersey manga larga</h3>
+                            </div>
+                            <span class="p1-price">40€</span>
+                            <div class="p1-sizes">
+                                <button class="p1-size-btn" data-size="S">S</button>
+                                <button class="p1-size-btn" data-size="M">M</button>
+                                <button class="p1-size-btn" data-size="L">L</button>
+                            </div>
+                        </div>
+                        <button class="p1-add-btn">Añadir a la cesta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="p1-indicators">
+                <span class="p1-dot active"></span>
+                <span class="p1-dot"></span>
+            </div>
+        </section>
+
+        <!-- PROPUESTA 2 -->
+        <section class="proposal-section">
+            <h2 class="proposal-title">
+                <span class="proposal-badge">2</span>
+                Cards Compactas con Badge
+            </h2>
+            <p class="proposal-desc">
+                Diseño vertical más compacto con el precio destacado como badge. Botón de añadir circular para ahorrar espacio. Se ven parcialmente las cards adyacentes.
+            </p>
+            
+            <div class="p2-carousel" id="p2Carousel">
+                <div class="p2-card" data-product-id="jersey-sin-mangas" data-product-name="Jersey sin mangas" data-product-price="30" data-product-image="img/abrigo.png">
+                    <div class="p2-image">
+                        <a href="productos/jersey-sin-mangas.html">
+                            <img src="img/abrigo.png" alt="Jersey sin mangas">
+                        </a>
+                        <span class="p2-price-badge">30€</span>
+                    </div>
+                    <div class="p2-content">
+                        <h3 class="p2-name">Jersey sin mangas</h3>
+                        <div class="p2-row">
+                            <div class="p2-sizes">
+                                <button class="p2-size-btn" data-size="S">S</button>
+                                <button class="p2-size-btn" data-size="M">M</button>
+                                <button class="p2-size-btn" data-size="L">L</button>
+                            </div>
+                            <button class="p2-add-btn" aria-label="Añadir a la cesta">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p2-card" data-product-id="jersey-manga-larga" data-product-name="Jersey manga larga" data-product-price="40" data-product-image="img/pijama.png">
+                    <div class="p2-image">
+                        <a href="productos/jersey-manga-larga.html">
+                            <img src="img/pijama.png" alt="Jersey manga larga">
+                        </a>
+                        <span class="p2-price-badge">40€</span>
+                    </div>
+                    <div class="p2-content">
+                        <h3 class="p2-name">Jersey manga larga</h3>
+                        <div class="p2-row">
+                            <div class="p2-sizes">
+                                <button class="p2-size-btn" data-size="S">S</button>
+                                <button class="p2-size-btn" data-size="M">M</button>
+                                <button class="p2-size-btn" data-size="L">L</button>
+                            </div>
+                            <button class="p2-add-btn" aria-label="Añadir a la cesta">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p2-progress">
+                <span class="p2-progress-dot active"></span>
+                <span class="p2-progress-dot"></span>
+            </div>
+        </section>
+
+        <!-- PROPUESTA 3 -->
+        <section class="proposal-section">
+            <h2 class="proposal-title">
+                <span class="proposal-badge">3</span>
+                Cards Premium con Gradiente
+            </h2>
+            <p class="proposal-desc">
+                Diseño más elegante con gradientes sutiles y sombras. Las tallas tienen forma de pill redondeada. Navegación con botones y contador.
+            </p>
+            
+            <div class="p3-container">
+                <div class="p3-carousel" id="p3Carousel">
+                    <div class="p3-card" data-product-id="jersey-sin-mangas" data-product-name="Jersey sin mangas" data-product-price="30" data-product-image="img/abrigo.png">
+                        <div class="p3-image">
+                            <a href="productos/jersey-sin-mangas.html">
+                                <img src="img/abrigo.png" alt="Jersey sin mangas">
+                            </a>
+                        </div>
+                        <div class="p3-content">
+                            <div class="p3-header">
+                                <h3 class="p3-name">Jersey sin mangas</h3>
+                                <span class="p3-price">30€</span>
+                            </div>
+                            <div class="p3-footer">
+                                <div class="p3-sizes">
+                                    <button class="p3-size-btn" data-size="S">S</button>
+                                    <button class="p3-size-btn" data-size="M">M</button>
+                                    <button class="p3-size-btn" data-size="L">L</button>
+                                </div>
+                                <button class="p3-add-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 5v14M5 12h14"/>
+                                    </svg>
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p3-card" data-product-id="jersey-manga-larga" data-product-name="Jersey manga larga" data-product-price="40" data-product-image="img/pijama.png">
+                        <div class="p3-image">
+                            <a href="productos/jersey-manga-larga.html">
+                                <img src="img/pijama.png" alt="Jersey manga larga">
+                            </a>
+                        </div>
+                        <div class="p3-content">
+                            <div class="p3-header">
+                                <h3 class="p3-name">Jersey manga larga</h3>
+                                <span class="p3-price">40€</span>
+                            </div>
+                            <div class="p3-footer">
+                                <div class="p3-sizes">
+                                    <button class="p3-size-btn" data-size="S">S</button>
+                                    <button class="p3-size-btn" data-size="M">M</button>
+                                    <button class="p3-size-btn" data-size="L">L</button>
+                                </div>
+                                <button class="p3-add-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 5v14M5 12h14"/>
+                                    </svg>
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p3-nav">
+                    <button class="p3-nav-btn" id="p3Prev">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <span class="p3-counter"><strong>1</strong> / 2</span>
+                    <button class="p3-nav-btn" id="p3Next">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="demo-toast" id="demoToast">
+        <span>✓</span>
+        <span id="toastMessage">Producto añadido</span>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Size selection for all proposals
+        document.querySelectorAll('.p1-size-btn, .p2-size-btn, .p3-size-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.p1-card, .p2-card, .p3-card');
+                const sizeClass = this.classList.contains('p1-size-btn') ? 'p1-size-btn' : 
+                                  this.classList.contains('p2-size-btn') ? 'p2-size-btn' : 'p3-size-btn';
+                card.querySelectorAll('.' + sizeClass).forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Add to cart for all proposals
+        document.querySelectorAll('.p1-add-btn, .p2-add-btn, .p3-add-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.p1-card, .p2-card, .p3-card');
+                const sizeClass = card.classList.contains('p1-card') ? 'p1-size-btn' : 
+                                  card.classList.contains('p2-card') ? 'p2-size-btn' : 'p3-size-btn';
+                const selectedSize = card.querySelector('.' + sizeClass + '.selected');
+                
+                if (!selectedSize) {
+                    showDemoToast('Selecciona una talla', 'error');
+                    return;
+                }
+
+                const product = {
+                    id: card.dataset.productId,
+                    name: card.dataset.productName,
+                    price: parseInt(card.dataset.productPrice),
+                    size: selectedSize.dataset.size,
+                    image: card.dataset.productImage
+                };
+
+                if (typeof Cart !== 'undefined') {
+                    Cart.addItem(product);
+                }
+                showDemoToast(product.name + ' añadido al carrito');
+            });
+        });
+
+        // Demo toast
+        function showDemoToast(message, type = 'success') {
+            const toast = document.getElementById('demoToast');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.textContent = message;
+            toast.style.background = type === 'error' ? '#F26C63' : '#2EC4C6';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // P3 Navigation
+        const p3Carousel = document.getElementById('p3Carousel');
+        const p3Counter = document.querySelector('.p3-counter');
+        let p3Index = 0;
+        const p3Cards = p3Carousel.querySelectorAll('.p3-card');
+
+        document.getElementById('p3Prev').addEventListener('click', () => {
+            p3Index = Math.max(0, p3Index - 1);
+            updateP3();
+        });
+
+        document.getElementById('p3Next').addEventListener('click', () => {
+            p3Index = Math.min(p3Cards.length - 1, p3Index + 1);
+            updateP3();
+        });
+
+        function updateP3() {
+            p3Cards[p3Index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            p3Counter.innerHTML = '<strong>' + (p3Index + 1) + '</strong> / ' + p3Cards.length;
+        }
+
+        // Update indicators on scroll
+        document.getElementById('p1Carousel').addEventListener('scroll', function() {
+            const scrollLeft = this.scrollLeft;
+            const cardWidth = this.offsetWidth * 0.85;
+            const index = Math.round(scrollLeft / cardWidth);
+            document.querySelectorAll('.p1-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        });
+
+        document.getElementById('p2Carousel').addEventListener('scroll', function() {
+            const scrollLeft = this.scrollLeft;
+            const cardWidth = this.offsetWidth * 0.7;
+            const index = Math.round(scrollLeft / cardWidth);
+            document.querySelectorAll('.p2-progress-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        });
+    </script>
+</body>
+</html>
