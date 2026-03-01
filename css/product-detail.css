@@ -239,24 +239,32 @@
 }
 
 .how-to-measure {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto 2.5rem;
 }
 
 .how-to-measure h3 {
     color: #003845;
     font-size: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     text-align: center;
 }
 
-.measure-image-placeholder {
-    min-height: 0;
-    max-width: 700px;
-    margin: 0 auto;
-    background: #f0f4f4;
-    border: 2px dashed #c4d4d4;
+.measure-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1.25rem;
     border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 56, 69, 0.08);
+}
+
+.measure-image-placeholder {
+    flex: 0 0 auto;
+    min-height: 0;
+    background: #f0f4f4;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,26 +272,32 @@
 }
 
 .measure-image-placeholder .measure-guide-img {
-    max-width: 380px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
     display: block;
 }
 
-.measure-legend {
-    margin-top: 1rem;
+.measure-legends {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.measure-legends .measure-legend {
+    margin: 0;
+    text-align: left;
     color: #4a5568;
     font-size: 0.95rem;
-    line-height: 1.6;
-    text-align: center;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.5;
+    max-width: none;
 }
 
 .measure-legend + .measure-legend {
-    margin-top: 0.35rem;
+    margin-top: 0;
 }
 
 .measure-instructions {
@@ -499,6 +513,18 @@
 
     .size-chart-section {
         padding: 2rem 1rem;
+    }
+
+    .measure-row {
+        flex-direction: column;
+    }
+
+    .measure-image-placeholder .measure-guide-img {
+        max-width: 260px;
+    }
+
+    .measure-legends .measure-legend {
+        text-align: center;
     }
 
     .warmth-scale {

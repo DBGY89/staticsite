@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 ideas de layout – Guía de tallas</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; line-height: 1.5; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; background: #f5f5f5; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #003845; }
+        .intro { color: #666; margin-bottom: 2.5rem; font-size: 0.95rem; }
+        .idea { background: #fff; border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #e8e8e8; }
+        .idea h2 { font-size: 1.15rem; color: #2EC4C6; margin-bottom: 0.75rem; }
+        .idea p { margin: 0 0 1rem; font-size: 0.9rem; color: #4a5568; }
+        .mockup { background: #f8f9fa; border: 2px dashed #c4d4d4; border-radius: 8px; padding: 1.25rem; margin-top: 0.75rem; font-size: 0.8rem; color: #666; }
+        .mockup .row { display: flex; gap: 1rem; align-items: stretch; }
+        .mockup .box { background: #e8f4f4; border-radius: 6px; padding: 0.75rem; min-height: 60px; }
+        .mockup .img { flex: 0 0 45%; background: #d4e8e8; display: flex; align-items: center; justify-content: center; color: #003845; font-weight: 600; }
+        .mockup .text { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+        .mockup .text .line { background: #eee; height: 20px; border-radius: 4px; }
+        .mockup .full { width: 100%; }
+        .mockup .small-img { flex: 0 0 35%; }
+        .mockup .stack { display: flex; flex-direction: column; gap: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>3 ideas de layout – Sección «Cómo medir a tu galgo»</h1>
+    <p class="intro">Opciones para poner la foto del perro y las medidas (A y B) una al lado de la otra en desktop y que la sección no se vea exageradamente grande.</p>
+
+    <!-- Idea 1 -->
+    <div class="idea">
+        <h2>Idea 1: Imagen izquierda, texto derecho (bloque compacto)</h2>
+        <p>Un solo bloque horizontal: a la izquierda la imagen del perro con medidas (tamaño contenido, ej. 280–320px de ancho), a la derecha las dos leyendas (A y B) en columna. Todo dentro de un contenedor con ancho máximo ~700px, centrado. En móvil se apila: imagen arriba, texto abajo.</p>
+        <div class="mockup">
+            <div class="row">
+                <div class="box img">📷 Imagen guía (A y B)</div>
+                <div class="box text">
+                    <div class="line"></div>
+                    <div class="line" style="width: 80%;"></div>
+                    <div class="line"></div>
+                    <div class="line" style="width: 70%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Idea 2 -->
+    <div class="idea">
+        <h2>Idea 2: Imagen centrada más pequeña, leyendas debajo en una sola fila</h2>
+        <p>La imagen se reduce (ej. max-width 260–300px) y queda centrada. Debajo, las dos explicaciones (A y B) en una sola fila, lado a lado, cada una en su “card” o celda. Así la sección es más baja y nada domina. En móvil: imagen centrada y las dos leyendas apiladas.</p>
+        <div class="mockup">
+            <div class="stack">
+                <div class="box img full" style="max-width: 280px; margin: 0 auto; min-height: 100px;">📷 Imagen pequeña centrada</div>
+                <div class="row">
+                    <div class="box text" style="flex: 1;"><div class="line"></div><div class="line" style="width: 90%;"></div></div>
+                    <div class="box text" style="flex: 1;"><div class="line"></div><div class="line" style="width: 85%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Idea 3 -->
+    <div class="idea">
+        <h2>Idea 3: Imagen derecha, leyendas izquierda (invertido)</h2>
+        <p>Mismo concepto que la idea 1 pero invertido: a la izquierda el texto (A y B, uno debajo del otro), a la derecha la imagen. Útil si quieres que se lea primero la explicación y luego se vea la ilustración. Misma lógica responsive: en móvil, texto arriba e imagen abajo.</p>
+        <div class="mockup">
+            <div class="row">
+                <div class="box text" style="flex: 1;">
+                    <div class="line"></div>
+                    <div class="line" style="width: 80%;"></div>
+                    <div class="line"></div>
+                    <div class="line" style="width: 70%;"></div>
+                </div>
+                <div class="box img">📷 Imagen guía</div>
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #888;">Elige la idea que más te guste y la implementamos en la página de producto. Si quieres, podemos mezclar detalles (por ejemplo imagen más pequeña de la idea 2 con disposición izquierda/derecha de la 1).</p>
+</body>
+</html>
