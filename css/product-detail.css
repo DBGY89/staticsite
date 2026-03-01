@@ -250,6 +250,37 @@
     text-align: center;
 }
 
+.measure-image-placeholder {
+    min-height: 280px;
+    background: #f0f4f4;
+    border: 2px dashed #c4d4d4;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.measure-image-placeholder .measure-guide-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.measure-legend {
+    margin-top: 1rem;
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.measure-legend + .measure-legend {
+    margin-top: 0.35rem;
+}
+
 .measure-instructions {
     display: flex;
     gap: 2rem;

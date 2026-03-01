@@ -9,13 +9,6 @@
     <link rel="stylesheet" href="../css/cart-checkout.css">
 </head>
 <body>
-    <!-- Language Selector -->
-    <div class="lang-selector">
-        <button class="lang-btn active" data-lang="es">ES</button>
-        <span class="lang-divider">|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
-    </div>
-
     <header class="logo-header">
         <a href="../index.html" class="back-link">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EC4C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -97,18 +90,11 @@
             
             <div class="how-to-measure">
                 <h3 data-i18n="size.howToMeasure">Cómo medir a tu galgo</h3>
-                <div class="measure-instructions">
-                    <div class="measure-item">
-                        <div class="measure-icon">📏</div>
-                        <h4 data-i18n="size.chest">Pecho</h4>
-                        <p data-i18n="size.chestDesc">Mide alrededor del pecho de tu galgo, justo debajo de las patas delanteras. Hazlo ajustado ya que es una prenda elástica que se estirará para adaptarse.</p>
-                    </div>
-                    <div class="measure-item">
-                        <div class="measure-icon">📐</div>
-                        <h4 data-i18n="size.length">Largo</h4>
-                        <p data-i18n="size.lengthDesc">Mide desde la base del cuello (con la cabeza levantada) hasta el inicio de la cola. Imagina una línea invisible en su trasero y mide hasta ese punto.</p>
-                    </div>
+                <div class="measure-image-placeholder">
+                    <img src="../img/guia-medidas.png" alt="Guía para medir a tu galgo: medidas A (largo) y B (pecho)" class="measure-guide-img">
                 </div>
+                <p class="measure-legend" data-i18n="size.measureA"><strong>A:</strong> medida desde la punta del cuello hasta la punta de la cola.</p>
+                <p class="measure-legend" data-i18n="size.measureB"><strong>B:</strong> circunferencia del pecho por el lado que sea más grande.</p>
             </div>
 
             <div class="size-table-container">
@@ -153,33 +139,6 @@
                     <li data-i18n="size.tip4Longsleeve">Para poner las mangas, sujeta la pata de tu galgo y guíala suavemente por la manga hasta el puño.</li>
                 </ul>
             </div>
-        </section>
-
-        <section class="warmth-factor-section">
-            <h2 data-i18n="warmth.title">Factor de calidez</h2>
-            <div class="warmth-scale">
-                <div class="warmth-level">
-                    <span class="warmth-number">1</span>
-                    <span class="warmth-label" data-i18n="warmth.light">Ligero</span>
-                </div>
-                <div class="warmth-level active">
-                    <span class="warmth-number">2</span>
-                    <span class="warmth-label" data-i18n="warmth.soft">Suave</span>
-                </div>
-                <div class="warmth-level">
-                    <span class="warmth-number">3</span>
-                    <span class="warmth-label" data-i18n="warmth.medium">Medio</span>
-                </div>
-                <div class="warmth-level">
-                    <span class="warmth-number">4</span>
-                    <span class="warmth-label" data-i18n="warmth.warm">Cálido</span>
-                </div>
-                <div class="warmth-level">
-                    <span class="warmth-number">5</span>
-                    <span class="warmth-label" data-i18n="warmth.veryWarm">Muy cálido</span>
-                </div>
-            </div>
-            <p class="warmth-description" data-i18n="warmth.descLongsleeve">Mayor cobertura para días frescos. Una opción ligera y acogedora perfecta para paseos casuales o para relajarse en casa.</p>
         </section>
     </main>
 
